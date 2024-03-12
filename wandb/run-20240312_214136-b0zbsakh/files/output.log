@@ -1,0 +1,81 @@
+  | Name  | Type                         | Params
+-------------------------------------------------------
+0 | model | MoEViTForImageClassification | 5.3 M
+-------------------------------------------------------
+5.3 M     Trainable params
+0         Non-trainable params
+5.3 M     Total params
+21.325    Total estimated model params size (MB)
+/Users/fangyuanyu/anaconda3/lib/python3.11/site-packages/lightning/pytorch/trainer/connectors/data_connector.py:441: The 'val_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=15` in the `DataLoader` to improve performance.
+Traceback (most recent call last):
+  File "/Users/fangyuanyu/Implementation/1bitNet/toy_cifar_vit.py", line 283, in <module>
+    one_bit_moe_trainer.fit(
+  File "/Users/fangyuanyu/anaconda3/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 544, in fit
+    call._call_and_handle_interrupt(
+  File "/Users/fangyuanyu/anaconda3/lib/python3.11/site-packages/lightning/pytorch/trainer/call.py", line 44, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fangyuanyu/anaconda3/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 580, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path)
+  File "/Users/fangyuanyu/anaconda3/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 987, in _run
+    results = self._run_stage()
+              ^^^^^^^^^^^^^^^^^
+  File "/Users/fangyuanyu/anaconda3/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 1031, in _run_stage
+    self._run_sanity_check()
+  File "/Users/fangyuanyu/anaconda3/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 1060, in _run_sanity_check
+    val_loop.run()
+  File "/Users/fangyuanyu/anaconda3/lib/python3.11/site-packages/lightning/pytorch/loops/utilities.py", line 182, in _decorator
+    return loop_run(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fangyuanyu/anaconda3/lib/python3.11/site-packages/lightning/pytorch/loops/evaluation_loop.py", line 135, in run
+    self._evaluation_step(batch, batch_idx, dataloader_idx, dataloader_iter)
+  File "/Users/fangyuanyu/anaconda3/lib/python3.11/site-packages/lightning/pytorch/loops/evaluation_loop.py", line 396, in _evaluation_step
+    output = call._call_strategy_hook(trainer, hook_name, *step_args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fangyuanyu/anaconda3/lib/python3.11/site-packages/lightning/pytorch/trainer/call.py", line 309, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/fangyuanyu/anaconda3/lib/python3.11/site-packages/lightning/pytorch/strategies/strategy.py", line 412, in validation_step
+    return self.lightning_module.validation_step(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fangyuanyu/Implementation/1bitNet/toy_cifar_vit.py", line 125, in validation_step
+    output = self(batch)
+             ^^^^^^^^^^^
+  File "/Users/fangyuanyu/anaconda3/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fangyuanyu/anaconda3/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fangyuanyu/Implementation/1bitNet/toy_cifar_vit.py", line 105, in forward
+    return self.model(**batch)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/fangyuanyu/anaconda3/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fangyuanyu/anaconda3/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fangyuanyu/Implementation/1bitNet/toy_cifar_vit.py", line 84, in forward
+    outputs = self.vit(pixel_values, head_mask=head_mask, output_attentions=output_attentions, output_hidden_states=output_hidden_states, return_dict=return_dict)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fangyuanyu/anaconda3/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fangyuanyu/anaconda3/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fangyuanyu/Implementation/1bitNet/toy_cifar_vit.py", line 58, in forward
+    layer_outputs = layer_module(hidden_states, layer_head_mask, output_attentions)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fangyuanyu/anaconda3/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fangyuanyu/anaconda3/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fangyuanyu/Implementation/1bitNet/toy_cifar_vit.py", line 33, in forward
+    outputs = torch.matmul(gate_softmax.unsqueeze(-1), expert_outputs).squeeze(-1)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: The size of tensor a (65) must match the size of tensor b (4) at non-singleton dimension 1
+Sanity Checking DataLoader 0:   0%|                                                                                                               | 0/2 [00:00<?, ?it/s]

@@ -1,0 +1,49 @@
+{
+    "os": "macOS-14.1-arm64-arm-64bit",
+    "python": "3.11.5",
+    "heartbeatAt": "2024-03-12T13:41:38.047019",
+    "startedAt": "2024-03-12T13:41:36.396444",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/Users/fangyuanyu/Implementation/1bitNet/toy_cifar_vit.py",
+    "codePathLocal": "toy_cifar_vit.py",
+    "codePath": "toy_cifar_vit.py",
+    "git": {
+        "remote": "https://github.com/fangyuan-ksgk/1bitNet.git",
+        "commit": "53387641fe968690139f17f21b9a2c7a7eb31629"
+    },
+    "email": "fangyuan.yu@gmail.com",
+    "root": "/Users/fangyuanyu/Implementation/1bitNet",
+    "host": "Fangyuans-MacBook-Pro.local",
+    "username": "fangyuanyu",
+    "executable": "/Users/fangyuanyu/anaconda3/bin/python",
+    "cpu_count": 16,
+    "cpu_count_logical": 16,
+    "cpu_freq": {
+        "current": 4056,
+        "min": 1020,
+        "max": 4056
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 4056,
+            "min": 1020,
+            "max": 4056
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 3721.8717193603516,
+            "used": 13.486248016357422
+        }
+    },
+    "gpuapple": {
+        "type": "arm",
+        "vendor": "Apple"
+    },
+    "memory": {
+        "total": 128.0
+    }
+}
